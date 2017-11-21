@@ -1,7 +1,7 @@
-#-----------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------
 #This is a choose-your-own-adventure game, resolving around the Game of Thrones TV Series
 #If you have not seen all seven seasons of Game of Thrones, don't play this. 
-#-----------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------
 
 require '/setup.rb'
 
@@ -31,8 +31,8 @@ class CerseiPlan < Scene
     elsif focus == "The Night King"
         puts "Sounds good! You will try to stop The Dead from attacking the Wall."
         return ''
-    
-    end
+        
+    end  
   end
 end
 
@@ -83,18 +83,53 @@ class CerseiPlan2 < Scene
     action = $stdin.gets.chomp
     
     if action == "Dany"
-      puts ""
-      return ""
+      puts "A bold move, The Mother of Dragons."
+      puts "Dany and her army have landed at Dragonstone."
+      puts "Whatever you do, beware of her dragons."
+      return 'CerseivsDany'
       
     elsif action == "The Night King"
-      puts ""
-      return 'death'
-    
-   
-   
+      puts "A bold move, The Night King."
+      puts "With your new troops already in the North, you are very close to The Wall."
+      puts "The only way to reach The Dead is by venturing beyond it."
+      return 'CerseivsNightKing'
+
     end
   end
 end
+
+class CerseivsDany < Scene
+  
+  def enter()
+    puts "There are two ways you can go about this."
+    puts "You can lay siege to Dragonstone or attack the castle from the sea."
+    puts "What will it be? Siege or attack?"
+    
+  action = $stdin.gets.chomp
+  
+    if action == "Siege" or "siege"
+      puts "You have chosen to lay siege to Dragonstone."
+      puts "You have Jamie march the Lannister army to the castle."
+      puts "The men set up tents and siege weapons."
+      puts "As night approaches, you hear a piercing screeching noise."
+      puts "The camp falls quiet for a few erie seconds."
+      puts "Then the sky gets lit on fire."
+      puts "Three full-grown dragons appear from behind the castle walls."
+      puts "They burn dowmn your camp, weapons and soliders."
+      puts "As morning approaches, the only thing left are black columns of smoke rising into the sky."
+      puts "Maybe it's just impossible to defeat a three dragons in battle."
+      return "death"
+      
+    elsif action == "Attack" or "attack"
+      puts "You have chosen to attack Dragonstone from the sea."
+      puts "The Ironborn Fleet sets course for the castle."
+      puts "As the castle walls appear on the horizon, you hear a piercing screech."
+      puts "Three full-grown dragons barrel from the sky towards your ships."
+      puts "In a helpless struggle, your soldiers stand frozen in awe."
+      puts "One by one, the dragons burn down the ships."
+      puts "As morning approaches, the only thing left are black columns of smoke rising into the sky."
+      puts "Maybe it's just impossible to defeat three dragons in battle."
+      return "death"
 
 class Finished < Scene
   def enter()
@@ -107,11 +142,10 @@ class Map
     'CharacterSetup' => CharacterSetup.new(),
     'CerseiPlan' => CerseiPlan.new(),
     'CerseivsJon' => CerseivsJon.new(),
-    'escape_pod' => EscapePod.new(),
-    'death' => Death.new(),
-    'finished' => Finished.new(),
+    'CerseiPlan2' => CerseiPlan2.new(),
+    'CerseivsDany' => CerseivsDany.new(),
+    'CerseivsNightKing' => CerseivsNightKing.new(),
   }
-
 
   def initialize(start_scene)
     @start_scene = start_scene
