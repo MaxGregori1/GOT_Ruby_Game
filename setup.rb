@@ -54,17 +54,17 @@ class CharacterSetup < Scene
     if character == "Cersei Lannister"
       puts "Interesing choice. You are now the queen of the Seven Kingdowns."
       puts "Try to survive as long as possible!"
-      return 'Cersei_Plan'
+      return 'CerseiPlan'
 
     elsif character == "Jon Snow"
       puts "Solid choice. You are now the King in The North."
       puts "Try to survive as long as possible!"
-      return 'death'
+      return ''
 
     elsif character == "Daenerys Targaryen"
       puts "A bold move. You are now the Mother of Dragons."
       puts "Try to survive as long as possible!"
-      return 'laser_weapon_armory'
+      return ''
       
     elsif character == "The Night King"
       puts "Good one. You are now ruler of the dead."
