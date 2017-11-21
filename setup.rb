@@ -1,4 +1,8 @@
-#Basic program functionality setup
+#-------------------------------------------------------------
+#This a supplement to the "general.rb" file.
+#The basic program and character setups can be found here.
+#-------------------------------------------------------------
+
 class Scene
   def enter()
     puts "This scene has not been created. Subclass it and implement enter()."
@@ -37,6 +41,7 @@ class Death < Scene
   def enter()
     puts @@death[rand(0..(@@death.length - 1))]
     exit(1)
+    
   end
 end
 
@@ -75,6 +80,7 @@ class CharacterSetup < Scene
       puts "You must have spelled something incorrectly."
       puts "Give it another try!"
       return 'character_setup'
+      
     end
   end
 end
