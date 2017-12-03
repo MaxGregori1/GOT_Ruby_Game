@@ -1,4 +1,4 @@
-# Game_of_Thrones_Ruby_Game
+# Game of Thrones Ruby Game
 This is a simple ruby game, based off of activity 45 in Ruby The Hard Way. 
 
 The game is setup as a classic choose-your-own-adventure type game.
