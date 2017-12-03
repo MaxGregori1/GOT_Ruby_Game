@@ -1,0 +1,29 @@
+    character = $stdin.gets.chomp
+
+    if character == "Cersei Lannister"
+      puts "Interesing choice. You are now the queen of the Seven Kingdowns."
+      puts "Try to survive as long as possible!"
+      puts "Please note that any commands you enter from here on out should be all lowercase."
+      puts "Good luck!"
+      return 'CerseiPlan'
+
+    elsif character == "Jon Snow"
+      puts "Solid choice. You are now the King in The North."
+      puts "Try to survive as long as possible!"
+      puts "Please note that any commands you enter from here on out should be all lowercase."
+      puts "Good luck!"
+      return 'JonPlan'
+
+    elsif character == "Daenerys Targaryen"
+      puts "A bold move. You are now the Mother of Dragons."
+      puts "Try to survive as long as possible!"
+      puts "Please note that any commands you enter from here on out should be all lowercase."
+      puts "Good luck!"
+      return 'DanyPlan'
+      
+    elsif character == "The Night King"
+      puts "Good one. You are now ruler of the dead."
+      puts "Try to survive as long as possible!"
+      puts "Please note that any commands you enter from here on out should be all lowercase."
+      puts "Good luck!"
+      return 'NightPlan'
