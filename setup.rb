@@ -3,12 +3,7 @@
 #The basic program and character setups can be found here.
 #-------------------------------------------------------------
 
-class Scene
-  def enter()
-    puts "This scene has not been created. Subclass it and implement enter()."
-    exit(1)
-  end
-end
+require './general.rb'
 
 class Engine
 
@@ -18,7 +13,7 @@ class Engine
 
   def play()
     current_scene = @scene_map.opening_scene()
-    last_scene = @scene_map.next_scene('finished')
+    last_scene = @scene_map.next_scene('End')
 
     while current_scene != last_scene
       next_scene_name = current_scene.enter()
@@ -29,58 +24,46 @@ class Engine
   end
 end
 
-class Death < Scene
-
-  @@death = [
-    "You died.  No Iron Throne for you.",
-     "Congrats you dead.",
-     "Aaaaaaaaaaaaaand game over.",
-     "Okay it really isn't that hard."
-  ]
+class Introduction < Scene
 
   def enter()
-    puts @@death[rand(0..(@@death.length - 1))]
-    exit(1)
+    puts "Welcome to the Great Kingdoms of Westeros."
+    puts "You are playing as Cersei Lannister, current queen of the Seven Kingdoms."
+    puts "Your goal is to bring order to the Seven Kingdoms by conquering as much land as possible."
+    puts "Please make sure that any and all commands you enter a fully lowercase."
+    puts "Good luck!"
+    return "CerseiPlan"
     
   end
 end
 
-class CharacterSetup < Scene
+class Map
+  @@scenes = {
+    'Introduction' => Introduction.new(),
+    'CerseiPlan' => CerseiPlan.new(),
+    'CerseivsJon' => CerseivsJon.new(),
+    'CerseiPlan2' => CerseiPlan2.new(),
+    'CerseivsDany' => CerseivsDany.new(),
+    'CerseivsNightKing' => CerseivsNightKing.new(),
+    'CerseiPlan3' => CerseiPlan3.new(),
+    'End' => End.new()
+  }
 
-  def enter()
-    puts "Welcome to the Great Kingdoms of Westeros."
-    puts "You have the choice of playing as one of four characters:"
-    puts "Cersei Lannister, Jon Snow, Daenerys Targaryen or The Night King."
-    puts "Please write out your desired character."
-    print "> "
+  def initialize(start_scene)
+    @start_scene = start_scene
+  end
 
-    character = $stdin.gets.chomp
 
-    if character == "Cersei Lannister"
-      puts "Interesing choice. You are now the queen of the Seven Kingdowns."
-      puts "Try to survive as long as possible!"
-      return 'CerseiPlan'
+  def next_scene(scene_name)
+    val = @@scenes[scene_name]
+    return val
+  end
 
-    elsif character == "Jon Snow"
-      puts "Solid choice. You are now the King in The North."
-      puts "Try to survive as long as possible!"
-      return ''
-
-    elsif character == "Daenerys Targaryen"
-      puts "A bold move. You are now the Mother of Dragons."
-      puts "Try to survive as long as possible!"
-      return ''
-      
-    elsif character == "The Night King"
-      puts "Good one. You are now ruler of the dead."
-      puts "Try to survive as long as possible!"
-      return ''
-
-    else
-      puts "You must have spelled something incorrectly."
-      puts "Give it another try!"
-      return 'character_setup'
-      
-    end
+  def opening_scene()
+    return next_scene(@start_scene)
   end
 end
+
+a_map = Map.new('Introduction')
+a_game = Engine.new(a_map)
+a_game.play()
