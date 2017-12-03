@@ -1,4 +1,7 @@
-    character = $stdin.gets.chomp
+ # This file contains additional code which did not make it into the first version of the game.
+ # This code is bug free, and can be used to extend the overall storyline.
+ 
+ character = $stdin.gets.chomp
 
     if character == "Cersei Lannister"
       puts "Interesing choice. You are now the queen of the Seven Kingdowns."
