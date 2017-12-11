@@ -3,7 +3,7 @@
 #The basic program and character setups can be found here.
 #-------------------------------------------------------------
 
-require './general.rb'
+require './Storyline.rb'
 
 class Engine
 
